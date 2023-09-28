@@ -1,3 +1,4 @@
+import 'package:fl_components/router/app_routes.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:fl_components/screens/screens.dart';
@@ -7,13 +8,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuOptions = AppRoutes.menuOptions;
     return Scaffold(
       appBar:
           AppBar(title: const Center(child: Text('Componentes en Flutter'))),
       body: ListView.separated(
-        itemBuilder: (context, index) => ListTile(
-          leading: const Icon(Icons.work_history_outlined),
-          title: const Text('Aqui va un titulo de ruta'),
+        itemBuilder: (context, i) => ListTile(
+          leading: Icon(menuOptions[i].icon),
+          title: Text(menuOptions[i].name),
           onTap: () {
             // Esta es una forma de navegar, aqui puedo controlar animacion de transicion y etc.
             // final route = MaterialPageRoute(
@@ -21,11 +23,11 @@ class HomeScreen extends StatelessWidget {
             // Navigator.push(context, route);
 
             // esta es otra forma mas facil, pero que me restrinje mas
-            Navigator.pushNamed(context, 'listview2');
+            Navigator.pushNamed(context, menuOptions[i].route);
           },
         ),
         separatorBuilder: (_, __) => const Divider(),
-        itemCount: 30,
+        itemCount: menuOptions.length,
       ),
     );
   }
