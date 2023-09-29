@@ -1,7 +1,8 @@
-import 'package:fl_components/router/app_routes.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:fl_components/screens/screens.dart';
+import 'package:fl_components/router/app_routes.dart';
+import 'package:fl_components/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,7 +15,10 @@ class HomeScreen extends StatelessWidget {
           AppBar(title: const Center(child: Text('Componentes en Flutter'))),
       body: ListView.separated(
         itemBuilder: (context, i) => ListTile(
-          leading: Icon(menuOptions[i].icon),
+          leading: Icon(
+            menuOptions[i].icon,
+            color: AppTheme.primary,
+          ),
           title: Text(menuOptions[i].name),
           onTap: () {
             // Esta es una forma de navegar, aqui puedo controlar animacion de transicion y etc.
